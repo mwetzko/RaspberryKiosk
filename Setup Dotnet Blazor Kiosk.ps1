@@ -19,7 +19,8 @@ param(
     [Parameter(Mandatory, Position = 4, HelpMessage = "Startup File")]
     [string] $startup,    
     [string] $url,
-    [switch] $reboot
+    [switch] $reboot,
+    [switch] $skipdotnetinstall
 )
 
 $ErrorActionPreference = "Stop"
@@ -48,7 +49,9 @@ try {
 
     $null = ExecSSH "sudo apt-get install matchbox-window-manager xautomation unclutter --yes"
 
-    & ".\InstallDotnet.ps1" "--version latest --runtime aspnetcore"
+    if (!($skipdotnetinstall.IsPresent)) {
+        & ".\InstallDotnet.ps1" "--version latest --runtime aspnetcore"
+    }
     
     Write-Host "Uploading app files..." -ForegroundColor DarkGray
 

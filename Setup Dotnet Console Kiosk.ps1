@@ -18,7 +18,8 @@ param(
     [string] $folder,
     [Parameter(Mandatory, Position = 4, HelpMessage = "Startup File")]
     [string] $startup,
-    [switch] $reboot
+    [switch] $reboot,
+    [switch] $skipdotnetinstall
 )
 
 $ErrorActionPreference = "Stop"
@@ -41,7 +42,9 @@ try {
 
     $null = ExecSSH "sudo apt-get update"
 
-    & ".\InstallDotnet.ps1" "--version latest"
+    if (!($skipdotnetinstall.IsPresent)) {
+        & ".\InstallDotnet.ps1" "--version latest"
+    }
     
     Write-Host "Uploading app files..." -ForegroundColor DarkGray
 
