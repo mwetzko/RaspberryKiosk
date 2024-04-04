@@ -52,6 +52,7 @@ This script displays a dotnet/mono compatible console app as a fullscreen / sing
 + `<publish-path>` Mandatory. The path of the published files on the local disk
 + `<name-of-dll>` Mandatory. The name of the dll to load
 + `[-reboot]` Optional. Reboots the remote device if kiosk installation has finished
++ `[-skipdotnetinstall]` Optional. Skips installing dotnet in case you have done that already
 
 ### Sample
 
@@ -81,6 +82,7 @@ This script displays a dotnet blazor server app as a fullscreen / single app / k
 + `<name-of-dll>` Mandatory. The name of the dll to load
 + `[-url]` Optional. If you changed the default hosting url from http://localhost:5000 to any other of you choice, provide the new url here.
 + `[-reboot]` Optional. Reboots the remote device if kiosk installation has finished
++ `[-skipdotnetinstall]` Optional. Skips installing dotnet in case you have done that already
 
 ### Sample
 
